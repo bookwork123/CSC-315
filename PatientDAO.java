@@ -32,17 +32,17 @@ public class PatientDAO {
     // ADD PATIENT
     // ---------------------------
     public static void addPatient(Scanner scanner) {
-
         System.out.println("Enter patient name:");
-        String name = scanner.next();
+        scanner.nextLine();  // Clear scanner buffer
+        String name = scanner.nextLine(); // Allows spaces
 
         System.out.println("Enter patient height:");
         double height = scanner.nextDouble();
 
-        String query = "INSERT INTO Patients(name, height) VALUES (?, ?)";
+        String query = "INSERT INTO patient(name, height) VALUES (?, ?)";
 
         try (Connection conn = Database.connect();
-             PreparedStatement ps = conn.prepareStatement(query)) {
+            PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setString(1, name);
             ps.setDouble(2, height);
@@ -54,6 +54,7 @@ public class PatientDAO {
             e.printStackTrace();
         }
     }
+
 
     // ---------------------------
     // UPDATE PATIENT
@@ -69,7 +70,7 @@ public class PatientDAO {
         System.out.println("Enter new height:");
         double height = scanner.nextDouble();
 
-        String query = "UPDATE Patients SET name = ?, height = ? WHERE p_id = ?";
+        String query = "UPDATE patient SET name = ?, height = ? WHERE p_id = ?";
 
         try (Connection conn = Database.connect();
              PreparedStatement ps = conn.prepareStatement(query)) {
@@ -94,7 +95,7 @@ public class PatientDAO {
         System.out.println("Enter patient ID to delete:");
         int id = scanner.nextInt();
 
-        String query = "DELETE FROM Patients WHERE p_id = ?";
+        String query = "DELETE FROM patient WHERE p_id = ?";
 
         try (Connection conn = Database.connect();
              PreparedStatement ps = conn.prepareStatement(query)) {
