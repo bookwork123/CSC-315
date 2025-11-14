@@ -1,70 +1,61 @@
 import java.util.Scanner;
-import java.sql.*;
 
 public class MainLoop {
-    static String user = "root";
-    static String password = "Root456!&";
-    static String query = "";
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         System.out.println("Welcome to the Foot Doctor's Database!");
-        System.out.println();
-        System.out.println("oOOO() ()OOOo\r\n" + //
-                        "/  _)   (_  \\\r\n" + //
-                        "|  (     )  |\r\n" + //
-                        "\\__)     (__/");
-        System.out.println();
-        System.out.println("Please select a section of the database:");
         boolean loop = true;
-        while (loop == true) {
+
+        while (loop) {
             System.out.println("""
+                    Select a section:
                     1. Patients
                     2. Procedures
                     3. Patient History
+                    4. Exit
                     """);
+
             int section = scanner.nextInt();
 
-            if (section == 1) {
-                System.out.println();
-                System.out.println("Would you like to:");
-                System.out.println("""
-                        1. View Patients
-                        2. Add Patient
-                        3. Update Patient
-                        4. Delete Patient
-                        """);
-            } else if (section == 2) {
-                System.out.println();
-                System.out.println("Would you like to:");
-                System.out.println("""
-                        1. View Procedures
-                        2. Add Procedure
-                        3. Update Procedure
-                        4. Delete Procedure
-                        """);
+            switch (section) {
 
-            } else if (section == 3) {
-                System.out.println();
-                System.out.println("Would you like to:");
-                System.out.println("""
-                        1. View Patient History
-                        2. Add Patient History
-                        3. Update Patient History
-                        4. Delete Patient History
-                        """);
-            } else {
-                System.out.println();
-                System.out.println("Please make a valid choice.");
-                System.out.println();
-                continue;
-            }            
+                case 1 -> {
+                    System.out.println("""
+                            1. View Patients
+                            2. Add Patient
+                            3. Update Patient
+                            4. Delete Patient
+                            """);
+                    int choice = scanner.nextInt();
+                    switch (choice) {
+                        case 1 -> PatientDAO.viewPatients();
+                        case 2 -> PatientDAO.addPatient(scanner);
+                        case 3 -> PatientDAO.updatePatient(scanner);
+                        case 4 -> PatientDAO.deletePatient(scanner);
+                    }
+                }
+
+                case 2 -> {
+                    System.out.println("Procedures not implemented yet.");
+                    // Call ProcedureDAO methods here
+                }
+
+                case 3 -> {
+                    System.out.println("Patient History not implemented yet.");
+                    // Call HistoryDAO methods here
+                }
+
+                case 4 -> {
+                    loop = false;
+                    System.out.println("Goodbye!");
+                }
+
+                default -> System.out.println("Invalid choice.");
+            }
         }
 
-
-
-
-    } // main
-
-}// mainLoop
+        scanner.close();
+    }
+}
