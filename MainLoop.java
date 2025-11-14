@@ -28,13 +28,32 @@ public class MainLoop {
 
             if (section == 1) {
                 System.out.println();
-
-
-
+                System.out.println("Would you like to:");
+                System.out.println("""
+                        1. View Patients
+                        2. Add Patient
+                        3. Update Patient
+                        4. Delete Patient
+                        """);
             } else if (section == 2) {
+                System.out.println();
+                System.out.println("Would you like to:");
+                System.out.println("""
+                        1. View Procedures
+                        2. Add Procedure
+                        3. Update Procedure
+                        4. Delete Procedure
+                        """);
 
             } else if (section == 3) {
-
+                System.out.println();
+                System.out.println("Would you like to:");
+                System.out.println("""
+                        1. View Patient History
+                        2. Add Patient History
+                        3. Update Patient History
+                        4. Delete Patient History
+                        """);
             } else {
                 System.out.println();
                 System.out.println("Please make a valid choice.");
