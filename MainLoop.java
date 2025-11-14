@@ -27,7 +27,7 @@ public class MainLoop {
             int section = scanner.nextInt();
 
             if (section == 1) {
-                System.out.println());
+                System.out.println();
 
 
 
