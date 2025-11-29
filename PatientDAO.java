@@ -65,7 +65,8 @@ public class PatientDAO {
         int id = scanner.nextInt();
 
         System.out.println("Enter new name:");
-        String name = scanner.next();
+        scanner.nextLine();  // Clear scanner buffer
+        String name = scanner.nextLine(); // Allows spaces
 
         System.out.println("Enter new height:");
         double height = scanner.nextDouble();
