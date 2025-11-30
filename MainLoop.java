@@ -38,8 +38,19 @@ public class MainLoop {
                 }
 
                 case 2 -> {
-                    System.out.println("Procedures not implemented yet.");
-                    // Call ProcedureDAO methods here
+                    System.out.println("""
+                            1. View Procedures
+                            2. Add Procedure
+                            3. Update Procedure
+                            4. Delete Procedure
+                            """);
+                    int choice = scanner.nextInt();
+                    switch (choice) {
+                        case 1 -> ProcedureDAO.viewProcedures();
+                        case 2 -> ProcedureDAO.addProcedure(scanner);
+                        case 3 -> ProcedureDAO.updateProcedure(scanner);
+                        case 4 -> ProcedureDAO.deleteProcedure(scanner);
+                    }
                 }
 
                 case 3 -> {
