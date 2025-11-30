@@ -54,7 +54,25 @@ public class MainLoop {
                 }
 
                 case 3 -> {
-                    System.out.println("Patient History not implemented yet.");
+                    boolean historyLoop = true;
+                          while (historyLoop) {
+                            System.out.println("""
+                             1. View Patient History
+                             2. Add Patient History
+                             3. Update Patient History
+                             4. Delete Patient History
+                             5. Back to Main Menu
+                             """);
+                                 int choice = scanner.nextInt();
+                                     switch (choice) {
+                                         case 1 -> HistoryDAO.viewHistory();
+                                         case 2 -> HistoryDAO.addHistory(scanner);
+                                         case 3 -> HistoryDAO.updateHistory(scanner);
+                                         case 4 -> HistoryDAO.deleteHistory(scanner);
+                                         case 5 -> historyLoop = false;
+                                         default -> System.out.println("Invalid choice.");
+                             }
+                        }
                     // Call HistoryDAO methods here
                 }
 
