@@ -22,57 +22,69 @@ public class MainLoop {
             switch (section) {
 
                 case 1 -> {
-                    System.out.println("""
-                            1. View Patients
-                            2. Add Patient
-                            3. Update Patient
-                            4. Delete Patient
-                            """);
-                    int choice = scanner.nextInt();
-                    switch (choice) {
-                        case 1 -> PatientDAO.viewPatients();
-                        case 2 -> PatientDAO.addPatient(scanner);
-                        case 3 -> PatientDAO.updatePatient(scanner);
-                        case 4 -> PatientDAO.deletePatient(scanner);
+                    boolean patientLoop = true;
+                    while (patientLoop) {
+                        System.out.println("""
+                                1. View Patients
+                                2. Add Patient
+                                3. Update Patient
+                                4. Delete Patient
+                                5. Back to Main Menu
+                                """);
+                        int choice = scanner.nextInt();
+                        switch (choice) {
+                            case 1 -> PatientDAO.viewPatients();
+                            case 2 -> PatientDAO.addPatient(scanner);
+                            case 3 -> PatientDAO.updatePatient(scanner);
+                            case 4 -> PatientDAO.deletePatient(scanner);
+                            case 5 -> patientLoop = false;
+                            default -> System.out.println("Invalid choice.");
+                        }
                     }
                 }
 
                 case 2 -> {
-                    System.out.println("""
-                            1. View Procedures
-                            2. Add Procedure
-                            3. Update Procedure
-                            4. Delete Procedure
-                            """);
-                    int choice = scanner.nextInt();
-                    switch (choice) {
-                        case 1 -> ProcedureDAO.viewProcedures();
-                        case 2 -> ProcedureDAO.addProcedure(scanner);
-                        case 3 -> ProcedureDAO.updateProcedure(scanner);
-                        case 4 -> ProcedureDAO.deleteProcedure(scanner);
+                    boolean procedureLoop = true;
+                    while (procedureLoop) {
+                        System.out.println("""
+                                1. View Procedures
+                                2. Add Procedure
+                                3. Update Procedure
+                                4. Delete Procedure
+                                5. Back to Main Menu
+                                """);
+                        int choice = scanner.nextInt();
+                        switch (choice) {
+                            case 1 -> ProcedureDAO.viewProcedures();
+                            case 2 -> ProcedureDAO.addProcedure(scanner);
+                            case 3 -> ProcedureDAO.updateProcedure(scanner);
+                            case 4 -> ProcedureDAO.deleteProcedure(scanner);
+                            case 5 -> procedureLoop = false;
+                            default -> System.out.println("Invalid choice.");
+                        }
                     }
                 }
 
                 case 3 -> {
                     boolean historyLoop = true;
-                          while (historyLoop) {
-                            System.out.println("""
-                             1. View Patient History
-                             2. Add Patient History
-                             3. Update Patient History
-                             4. Delete Patient History
-                             5. Back to Main Menu
-                             """);
-                                 int choice = scanner.nextInt();
-                                     switch (choice) {
-                                         case 1 -> HistoryDAO.viewHistory();
-                                         case 2 -> HistoryDAO.addHistory(scanner);
-                                         case 3 -> HistoryDAO.updateHistory(scanner);
-                                         case 4 -> HistoryDAO.deleteHistory(scanner);
-                                         case 5 -> historyLoop = false;
-                                         default -> System.out.println("Invalid choice.");
-                             }
+                    while (historyLoop) {
+                        System.out.println("""
+                                1. View Patient History
+                                2. Add Patient History
+                                3. Update Patient History
+                                4. Delete Patient History
+                                5. Back to Main Menu
+                                """);
+                        int choice = scanner.nextInt();
+                        switch (choice) {
+                            case 1 -> HistoryDAO.viewHistory();
+                            case 2 -> HistoryDAO.addHistory(scanner);
+                            case 3 -> HistoryDAO.updateHistory(scanner);
+                            case 4 -> HistoryDAO.deleteHistory(scanner);
+                            case 5 -> historyLoop = false;
+                            default -> System.out.println("Invalid choice.");
                         }
+                    }
                     // Call HistoryDAO methods here
                 }
 
